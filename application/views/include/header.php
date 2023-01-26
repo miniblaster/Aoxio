@@ -209,8 +209,8 @@
 
         <?php if (isset($page) && $page == 'Company'): ?>
             <header class="<?php if(isset($is_embed) && $is_embed == true){echo 'd-hide';} ?> <?php if (isset($page_title) && $page_title == 'Company Home'){echo 'position-absolute';} ?> left-0 top-0 w-100">
-                <div class="container">
-                    <nav class="navbar navbar-expand-lg navbar-light py-3">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
+                    <div class="container">
                         <a class="navbar-brand mr-lg-5" href="<?php echo base_url($slug) ?>">
                             <?php if (!empty($company->logo)):?>
                                 <img width="120px" src="<?php echo base_url($company->logo) ?>" alt="logo">
@@ -273,10 +273,11 @@
                                 </li>
                             </ul>
 
-                        </div>
-                        <!-- End Menu -->
+                        </nav>
+                    
+                    </div>
+                    <!-- End Menu -->
 
-                    </nav>
                 </div>
             </header>
         <?php endif ?>
