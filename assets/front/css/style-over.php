@@ -89,6 +89,10 @@ a:hover {
     box-shadow:0 0 0 .2rem rgba(0,123,255,.25)
 }
 
+nav {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+
 .navbar-light .navbar-nav .nav-link:focus,.navbar-light .navbar-nav .nav-link:hover{
     color:#<?= $_GET['color'] ?>;
 }

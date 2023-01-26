@@ -116,7 +116,7 @@
                         </a>
 
                         <button type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler">
-                            <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+                            <span class="navbar-toggler-icon"><i></i></span>
                         </button>
 
                         <!-- Menu -->
@@ -148,7 +148,7 @@
                                     <li class="nav-item dropdown">
                                         <a href="javascript:void(0);" data-toggle="dropdown" class="nav-link dropdown-toggle"><?php echo trans('pages') ?></a>
 
-                                        <ul class="dropdown-menu shadow mt-1">
+                                        <ul class="dropdown-menu bg-dark shadow mt-1 border-light">
                                             <?php foreach (get_pages(0) as $page): ?>
                                                 <li><a class="dropdown-item" href="<?php echo base_url('page/'.$page->slug) ?>"><?php echo html_escape($page->title) ?></a></li>
                                             <?php endforeach ?>
