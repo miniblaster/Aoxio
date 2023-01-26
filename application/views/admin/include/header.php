@@ -85,9 +85,6 @@
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav pl-3">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-      </li>
       <?php if(is_user()): ?>
         <li class="nav-item d-sm-inline-block">
           <a target="_blank" href="<?php echo base_url($this->business->slug) ?>" class="btn btn-outline-secondary btn-sm mt-1 ml-2"><i class="lni lni-eye"></i> <?php echo trans('view-page') ?></a>
@@ -148,5 +145,260 @@
     </ul>
   </nav>
   <!-- /.navbar -->
+
+  
+  <nav class="navbar navbar-expand-lg navbar-light topnav-menu">
+    <div class="container">
+      <div class="collapse navbar-collapse" id="topnav_menu_content">
+        <ul class="navbar-nav">
+          <?php if (is_admin()): ?>
+                  
+            <li class="nav-item">
+              <a href="<?php echo base_url('admin/dashboard') ?>" class="nav-link <?php if(isset($page_title) && $page_title == "Dashboard"){echo "active";} ?>">
+                <i class="nav-icon lni lni-grid-alt"></i> <p><?php echo trans('dashboard') ?></p>
+              </a>
+            </li>
+            
+            <li class="nav-item has-treeview <?php if(isset($page) && $page == "Settings"){echo "menu-open";} ?>">
+              <a href="#" class="nav-link <?php if(isset($page) && $page == "Settings"){echo "active";} ?>">
+                <i class="nav-icon lni lni-cog"></i>
+                <p>
+                  <?php echo trans('settings') ?>
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="<?php echo base_url('admin/settings') ?>" class="nav-link <?php if(isset($page_title) && $page_title == "System Settings"){echo "active";} ?>">
+                    <i class="lni lni-layout nav-icon"></i>
+                    <p><?php echo trans('website-settings') ?></p>
+                  </a>
+                </li>
+
+                <li class="nav-item <?= $uval; ?>">
+                  <a href="<?php echo base_url('admin/payment/settings') ?>" class="nav-link <?php if(isset($page_title) && $page_title == "Payment Settings"){echo "active";} ?>">
+                    <i class="lni lni-coin nav-icon"></i>
+                    <p><?php echo trans('payment-settings') ?></p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="<?php echo base_url('admin/settings/license') ?>" class="nav-link <?php if(isset($page_title) && $page_title == "License"){echo "active";} ?>">
+                    <i class="lni lni-key nav-icon rt-90"></i>
+                    <p><?php echo trans('license') ?></p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="<?php echo base_url('admin/settings/change_password') ?>" class="nav-link <?php if(isset($page_title) && $page_title == "Change Password"){echo "active";} ?>">
+                    <i class="lni lni-lock-alt nav-icon"></i>
+                    <p><?php echo trans('change-password') ?></p>
+                  </a>
+                </li>
+
+              </ul>
+            </li>
+
+            <li class="nav-item has-treeview <?php if(isset($page) && $page == "Payouts"){echo "menu-open";} ?> <?= $uval; ?>">
+              <a href="#" class="nav-link <?php if(isset($page) && $page == "Payouts"){echo "active";} ?>">
+                <i class="nav-icon fas fa-credit-card"></i>
+                <p>
+                  <?php echo trans('payouts') ?>
+                  <i class="right lni lni-chevron-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a class="nav-link <?php if(isset($page_title) && $page_title == "Add Payout"){echo "active";} ?>" href="<?php echo base_url('admin/payouts/add') ?>"><i class="far fa-plus-circle nav-icon"></i> <p><?php echo trans('add-payout') ?></p></a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link <?php if(isset($page_title) && $page_title == "Payout Settings"){echo "active";} ?>" href="<?php echo base_url('admin/payouts/settings') ?>"><i class="lni lni-coin nav-icon"></i> <p><?php echo trans('payout-settings') ?></p></a>
+                </li>
+                
+                <li class="nav-item">
+                  <a class="nav-link <?php if(isset($page_title) && $page_title == "Payout Requests"){echo "active";} ?>" href="<?php echo base_url('admin/payouts/requests') ?>"><i class="fas fa-file-invoice-dollar nav-icon"></i> <p><?php echo trans('payout-requests') ?></p></a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link <?php if(isset($page_title) && $page_title == "Payout Completed"){echo "active";} ?>" href="<?php echo base_url('admin/payouts/completed') ?>"><i class="far fa-check-circle nav-icon"></i> <p><?php echo trans('completed') ?></p></a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link <?php if(isset($page_title) && $page_title == "Language"){echo "active";} ?>" href="<?php echo base_url('admin/language') ?>">
+                <i class="nav-icon fas fa-globe"></i> <p><?php echo trans('language') ?></p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link <?php if(isset($page_title) && $page_title == "Package"){echo "active";} ?>" href="<?php echo base_url('admin/package') ?>">
+                <i class="nav-icon lni lni-layers"></i> <p><?php echo trans('plans') ?></p>
+              </a>
+            </li>
+
+            <li class="nav-item d-hides">
+              <a class="nav-link <?php if(isset($page_title) && $page_title == "Coupons"){echo "active";} ?>" href="<?php echo base_url('admin/coupons/plan') ?>">
+              <i class="nav-icon lni lni-offer"></i> <p><?php echo trans('coupons') ?></p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link <?php if(isset($page_title) && $page_title == "Category"){echo "active";} ?>" href="<?php echo base_url('admin/category') ?>">
+                <i class="nav-icon lni lni-folder"></i> <p><?php echo trans('categories') ?></p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link <?php if(isset($page_title) && $page_title == "Blogs"){echo "active";} ?>" href="<?php echo base_url('admin/blog') ?>">
+                <i class="nav-icon lni lni-image"></i> <p><?php echo trans('blogs') ?></p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link <?php if(isset($page_title) && $page_title == "Users"){echo "active";} ?>" href="<?php echo base_url('admin/users') ?>">
+                <i class="nav-icon lni lni-users"></i> <p><?php echo trans('users') ?></p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link <?php if(isset($page_title) && $page_title == "Testimonials"){echo "active";} ?>" href="<?php echo base_url('admin/testimonial') ?>">
+                <i class="nav-icon far fa-comment-dots"></i> <p><?php echo trans('testimonials') ?> </p> 
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link <?php if(isset($page_title) && $page_title == "Features"){echo "active";} ?>" href="<?php echo base_url('admin/site_features') ?>">
+                <i class="nav-icon lni lni-star"></i> <p><?php echo trans('features') ?></p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link <?php if(isset($page_title) && $page_title == "Pages"){echo "active";} ?>" href="<?php echo base_url('admin/pages') ?>">
+                <i class="nav-icon lni lni-layout"></i> <p><?php echo trans('pages') ?></p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link <?php if(isset($page_title) && $page_title == "Faqs"){echo "active";} ?>" href="<?php echo base_url('admin/faq') ?>">
+                <i class="nav-icon lni lni-question-circle"></i> <p><?php echo trans('faqs') ?></p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link <?php if(isset($page_title) && $page_title == "Contact"){echo "active";} ?>" href="<?php echo base_url('admin/contact') ?>">
+                <i class="nav-icon lni lni-popup"></i> <p><?php echo trans('contacts') ?></p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link <?php if(isset($page_title) && $page_title == "App Info"){echo "active";} ?>" href="<?php echo base_url('admin/dashboard/app_info') ?>">
+                <i class="nav-icon far fa-question-circle"></i> <p><?php echo trans('info') ?></p>
+              </a>
+            </li>
+
+          <?php endif; ?>
+
+          <?php if (is_user()): ?>
+
+            <li class="nav-item">
+              <a href="<?php echo base_url('admin/dashboard/user') ?>" class="nav-link <?php if(isset($page_title) && $page_title == "User Dashboard"){echo "active";} ?>">
+                <i class="nav-icon lni lni-grid-alt"></i> <span><?php echo trans('dashboard') ?></span>
+              </a>
+            </li>
+
+            <?php if (check_my_payment_status() == TRUE): ?>
+
+              <?php if (settings()->enable_wallet == 1): ?>
+              <li class="nav-item has-treeview <?php if(isset($page) && $page == "Payouts"){echo "menu-open";} ?> <?= $uval; ?>">
+                <a href="#" class="nav-link <?php if(isset($page) && $page == "Payouts"){echo "active";} ?>">
+                  <i class="nav-icon far fa-credit-card"></i>
+                  <span>
+                    <?php echo trans('payouts') ?>
+                    <i class="right lni lni-chevron-left"></i>
+                  </span>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a class="nav-link <?php if(isset($page_title) && $page_title == "Set Payout Account"){echo "active";} ?>" href="<?php echo base_url('admin/payouts/setup_account') ?>"><i class="fas fa-plus-circle nav-icon"></i> <span><?php echo trans('set-payout-account') ?></span></a>
+                  </li>
+                  
+                  <li class="nav-item">
+                    <a class="nav-link <?php if(isset($page_title) && $page_title == "Payouts"){echo "active";} ?>" href="<?php echo base_url('admin/payouts/user ') ?>"><i class="fas fa-credit-card nav-icon"></i> <span><?php echo trans('payouts') ?></span></a>
+                  </li>
+                </ul>
+              </li>
+              <?php endif; ?>
+
+              <?php if (check_feature_access('appointments') == TRUE): ?>
+              <li class="nav-item">
+                <a class="nav-link <?php if(isset($page_title) && $page_title == "Appointments"){echo "active";} ?>" href="<?php echo base_url('admin/appointment') ?>">
+                  <i class="nav-icon far fa-clock"></i> <span><?php echo trans('appointments') ?></span>
+                </a>
+              </li>
+              <?php endif; ?>
+
+              <li class="nav-item">
+                <a class="nav-link <?php if(isset($page_title) && $page_title == "Calendars"){echo "active";} ?>" href="<?php echo base_url('admin/appointment/calendars') ?>">
+                  <i class="nav-icon far fa-calendar-alt"></i> <span><?php echo trans('calendars') ?></span>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link <?php if(isset($page_title) && $page_title == "Location"){echo "active";} ?>" href="<?php echo base_url('admin/location') ?>">
+                  <i class="nav-icon lni lni-map"></i> <span><?php echo trans('locations') ?></span>
+                </a>
+              </li>
+              
+              <?php if (check_feature_access('staffs') == TRUE): ?>
+              <li class="nav-item">
+                <a class="nav-link <?php if(isset($page_title) && $page_title == "Staff"){echo "active";} ?>" href="<?php echo base_url('admin/staff') ?>">
+                  <i class="nav-icon lni lni-network"></i> <span><?php echo trans('staff') ?></span>
+                </a>
+              </li>
+              <?php endif; ?>
+
+
+              <?php if (check_feature_access('customers') == TRUE): ?>
+              <li class="nav-item">
+                <a class="nav-link <?php if(isset($page_title) && $page_title == "Customers" || isset($page) && $page == "Customers"){echo "active";} ?>" href="<?php echo base_url('admin/customers') ?>">
+                  <i class="nav-icon lni lni-users"></i> <span><?php echo trans('customers') ?></span>
+                </a>
+              </li>
+              <?php endif; ?>
+
+              <?php if (check_feature_access('services') == TRUE): ?>
+              <li class="nav-item">
+                <a class="nav-link <?php if(isset($page_title) && $page_title == "Service"){echo "active";} ?>" href="<?php echo base_url('admin/services') ?>">
+                  <i class="nav-icon lni lni-layers"></i> <span><?php echo trans('services') ?></span>
+                </a>
+              </li>
+              <?php endif; ?>
+              
+              <li class="nav-item">
+                <a class="nav-link <?php if(isset($page_title) && $page_title == "Reports"){echo "active";} ?>" href="<?php echo base_url('admin/reports') ?>">
+                <i class="nav-icon far fa-chart-bar"></i> <span><?php echo trans('reports') ?> </span>
+                </a>
+              </li>
+
+              <?php if (empty(get_by_user_id('plan_coupons'))): ?>
+                <li class="nav-item d-hide">
+                  <a class="nav-link <?php if(isset($page_title) && $page_title == "Redeem Coupon"){echo "active";} ?>" href="<?php echo base_url('admin/coupons/apply') ?>">
+                  <i class="nav-icon fas fa-laptop-code"></i> <span><?php echo trans('redeem-coupon') ?> </span>
+                  </a>
+                </li>
+              <?php endif; ?>
+            
+            <?php endif; ?>
+
+          <?php endif; ?>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+      
 
 

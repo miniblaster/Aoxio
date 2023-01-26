@@ -25,6 +25,7 @@ body{
 .main-header {
     transition: right 0.3s ease-in-out;
     margin-right: 250px;
+    margin-left: 0px !important;
 }
 
 .sidebar-collapse .main-sidebar, .sidebar-collapse .main-sidebar::before {
