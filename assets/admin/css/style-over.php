@@ -89,8 +89,13 @@ a:hover {
     box-shadow:0 0 0 .2rem rgba(0,123,255,.25)
 }
 
+.navbar-light .navbar-nav .nav-link:focus,.navbar-light .navbar-nav .nav-link {
+    color: #1c84ee !important;
+
+}
+
 .navbar-light .navbar-nav .nav-link:focus,.navbar-light .navbar-nav .nav-link:hover{
-    color:#<?= $_GET['color'] ?>;
+    color: #1c84ee !important;
 }
 .navbar-light .navbar-nav .nav-link.disabled{
     color:rgba(0,0,0,.3)
@@ -106,7 +111,7 @@ a:hover {
 }
 
 .navbar-dark .navbar-nav .nav-link:focus,.navbar-dark .navbar-nav .nav-link:hover{
-    color:#<?= $_GET['color'] ?>
+    color:#1c84ee !important;
 }
 .navbar-dark .navbar-nav .active>.nav-link,.navbar-dark .navbar-nav .nav-link.active,.navbar-dark .navbar-nav .nav-link.show,.navbar-dark .navbar-nav .show>.nav-link{
     color:#<?= $_GET['color'] ?>
@@ -265,7 +270,7 @@ a.badge-primary-soft:focus,a.badge-primary-soft:hover{
 @media (max-width:991.98px){
     .navbar-dark .navbar-nav .nav-link:hover{
         color:#6a747b;
-        color:#<?= $_GET['color'] ?>
+        color: #1c84ee !important;
     }
     .navbar-dark .navbar-nav .nav-link:focus{
         color:#<?= $_GET['color'] ?>

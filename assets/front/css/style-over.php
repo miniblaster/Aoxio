@@ -71,12 +71,20 @@ a:hover {
     text-decoration:none
 }
 
+.dropdown-menu {
+    border: 1px solid #555 !important;
+}
+
+.dropdown-item {
+    font-weight: 700 !important;
+}
+
 .dropdown-item:focus,.dropdown-item:hover{
-    background: #f9f9f9 !important;
-    transition: 0.1s;
-    color:#<?= $_GET['color'] ?> !important;
-    text-decoration:none;
-    background-color:transparent
+    background: #000 !important;
+    transition: 0.3s;
+    color: #fff !important;
+    text-decoration: none;
+    background-color: transparent
 }
 .dropdown-item.active,.dropdown-item:active{
     color:#<?= $_GET['color'] ?>;
@@ -93,8 +101,8 @@ nav {
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 }
 
-.navbar-light .navbar-nav .nav-link:focus,.navbar-light .navbar-nav .nav-link:hover{
-    color:#<?= $_GET['color'] ?>;
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover{
+    color:#1c84ee !important;
 }
 .navbar-light .navbar-nav .nav-link.disabled{
     color:rgba(0,0,0,.3)
@@ -110,10 +118,10 @@ nav {
 }
 
 .navbar-dark .navbar-nav .nav-link:focus,.navbar-dark .navbar-nav .nav-link:hover{
-    color:#<?= $_GET['color'] ?>
+    color:#1c84ee !important;
 }
 .navbar-dark .navbar-nav .active>.nav-link,.navbar-dark .navbar-nav .nav-link.active,.navbar-dark .navbar-nav .nav-link.show,.navbar-dark .navbar-nav .show>.nav-link{
-    color:#<?= $_GET['color'] ?>
+    color: #fff !important;
 }
 
 .badge-primary{
