@@ -5,6 +5,10 @@ header("Content-type: text/css");
 $site_color = $_GET['color'];
 ?>
 
+html {
+    font-size: 90% !important;
+}
+
 a{
     color:#<?= $_GET['color'] ?>;
     text-decoration:none;
@@ -73,6 +77,10 @@ a:hover {
 
 .dropdown-menu {
     border: 1px solid #555 !important;
+}
+
+.dropdown-menu-lg {
+    font-size: 12px !important;
 }
 
 .dropdown-item {

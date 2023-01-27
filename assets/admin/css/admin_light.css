@@ -61,7 +61,6 @@ aside.main-sidebar.sidebar-dark-primary.elevation-4 {
 
 a.nav-link.user-log {
     font-size: 15px;
-    border: 1px solid #ddd;
     color: #286efb !important;
     border-radius: 20px;
 }
@@ -69,8 +68,7 @@ a.nav-link.user-log {
 a.nav-link.user-log:hover {
     font-size: 15px;
     border: 1px solid #ddd;
-    color: #286efb !important;
-    background-color: rgba(40,110,251,.1) !important;;
+    color: white !important;
     border-radius: 20px;
 }
 
