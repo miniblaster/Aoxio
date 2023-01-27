@@ -77,72 +77,248 @@
  
   </head>
 
-  <body class="hold-transition sidebar-mini">
+  <body class="hold-transition sidebar-mini" data-theme-style="dark">
   
   <div class="wrapper <?php if(settings()->site_info == 3){echo "d-none";} ?>">
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav pl-3">
-      <?php if(is_user()): ?>
-        <li class="nav-item d-sm-inline-block">
-          <a target="_blank" href="<?php echo base_url($this->business->slug) ?>" class="btn btn-outline-secondary btn-sm mt-1 ml-2"><i class="lni lni-eye"></i> <?php echo trans('view-page') ?></a>
-        </li>
-      <?php else: ?>
-        <li class="nav-item d-sm-inline-block">
-          <a target="_blank" href="<?php echo base_url() ?>" class="btn btn-outline-secondary btn-sm mt-1 ml-2"><i class="lni lni-eye"></i> <?php echo trans('view-site') ?></a>
-        </li>
-      <?php endif; ?>
-    </ul>
+  <nav class="main-header navbar navbar-expand navbar-dark bg-dark">
+    <div class="container">
+       
+      <a target="_blank" href="<?php echo base_url() ?>" class="brand-link">
+        <img src="<?php echo base_url(settings()->favicon) ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
+        <span class="text-white font-weight-bold"><?php echo html_escape(settings()->site_name) ?></span>
+        <?php if(get_user_info() == TRUE){$uval = 'd-show';}else{$uval = 'd-hide';} ?>
+      </a>
+        
+      <!-- Left navbar links -->
+      <ul class="navbar-nav pl-3">
+       
+        <?php if(is_user()): ?>
+          <li class="nav-item d-sm-inline-block">
+            <a target="_blank" href="<?php echo base_url($this->business->slug) ?>" class="btn btn-outline-secondary btn-sm text-white"><i class="lni lni-eye"></i> <?php echo trans('view-page') ?></a>
+          </li>
+        <?php else: ?>
+          <li class="nav-item d-sm-inline-block">
+            <a target="_blank" href="<?php echo base_url() ?>" class="btn btn-outline-secondary btn-sm text-white"><i class="lni lni-eye"></i> <?php echo trans('view-site') ?></a>
+          </li>
+        <?php endif; ?>
+      </ul>
 
-    <!-- Right navbar links -->
-    <ul class="rtlnav navbar-nav <?php if(text_dir() == 'ltr'){echo "ml-auto";} ?>">
-      <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown pr-4">
-        <a class="nav-link user-log" data-toggle="dropdown" href="#">
-          <i class="lnib lni-user"></i> <?php echo ucfirst(user()->name) ?>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right mr-4">
-          
-          <a href="#" class="dropdown-item">
-            <div class="media">
-              <?php if (user()->role == 'admin'): ?>
-                
-              <?php else: ?>
-                <img src="<?php echo base_url(user()->thumb) ?>" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-              <?php endif ?>
-              
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  <?php echo character_limiter(user()->name, 18); ?>
-                </h3>
-                <p class="text-sm"><?php echo user()->email; ?></p>
-                <p class="text-sm text-muted"><i class="far fa-clock"></i> <?php echo get_time_ago(user()->created_at); ?></p>
+      
+      <!-- Right navbar links -->
+      <ul class="rtlnav navbar-nav collapse navbar-collapse justify-content-end <?php if(text_dir() == 'ltr'){echo "ml-auto";} ?>" id="main_navbar">
+
+        <li class="nav-item dropdown"> 
+          <a class="nav-link"  data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false"> 
+            <img id="header-lang-img" src="https://www.harcomia.com/dash-v2/assets/images/flags/us.jpg" alt="Header Language" height="16"> 
+          </a>
+          <div class="dropdown-menu dropdown-menu-right countries">
+            <div class="p-1 px-4">
+              <a class="dropdown-icon-item text-decoration-none" href="javascript:;">
+                <img src="https://www.harcomia.com/dash-v2/assets/images/flags/us.jpg" alt="user-image" class="me-1" height="12">
+                <span class="align-middle ml-2">English</span>
+              </a>
+            </div>
+            <div class="p-1 px-4">
+              <a class="dropdown-icon-item text-decoration-none" href="javascript:;">
+                <img src="https://www.harcomia.com/dash-v2/assets/images/flags/spain.jpg" alt="user-image" class="me-1" height="12">
+                <span class="align-middle ml-2">Spanish</span>
+              </a>
+            </div>
+            <div class="p-1 px-4">
+              <a class="dropdown-icon-item text-decoration-none" href="javascript:;">
+                <img src="https://www.harcomia.com/dash-v2/assets/images/flags/germany.jpg" alt="user-image" class="me-1" height="12">
+                <span class="align-middle ml-2">Germany</span>
+              </a>
+            </div>
+            <div class="p-1 px-4">
+              <a class="dropdown-icon-item text-decoration-none" href="javascript:;">
+                <img src="https://www.harcomia.com/dash-v2/assets/images/flags/italy.jpg" alt="user-image" class="me-1" height="12">
+                <span class="align-middle ml-2">Italian</span>
+              </a>
+            </div>
+            <div class="p-1 px-4">
+              <a class="dropdown-icon-item text-decoration-none" href="javascript:;">
+                <img src="https://www.harcomia.com/dash-v2/assets/images/flags/russia.jpg" alt="user-image" class="me-1" height="12">
+                <span class="align-middle ml-2">Russian</span>
+              </a>
+            </div>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown"> 
+          <a class="nav-link" href="javascript:;"> 
+            <button type="button" id="switch_theme_style" class="btn btn-link text-decoration-none p-0" data-toggle="tooltip">
+              <span style="color: white" data-theme-style="light" class=""><i class="far fa-fw fa-lg fa-moon mr-1"></i> </span>
+              <span style="color: white" data-theme-style="dark" class="d-none"><i class="far fa-fw fa-lg fa-sun mr-1"></i> </span>
+            </button>
+          </a>
+        </li>
+        
+        <li class="nav-item dropdown"> 
+          <a class="nav-link" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false"> 
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid icon-lg"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> 
+          </a>
+          <div class="dropdown-menu dropdown-menu-right p-3">
+            <div class="d-flex grid-row">
+              <div class="col-4 p-2 py-3">
+                <a class="dropdown-icon-item text-decoration-none" href="javascript:;">
+                  <div class="text-center">
+                    <img src="https://www.harcomia.com/assets/images/brands/github.png" />
+                    <p class="mb-0">GitHub</p>
+                  </div>
+                </a>
+              </div>
+              <div class="col-4 p-2 py-3">
+                <a class="dropdown-icon-item text-decoration-none" href="javascript:;">
+                  <div class="text-center">
+                    <img src="https://www.harcomia.com/assets/images/brands/bitbucket.png" />
+                    <p class="mb-0">Bitbucket</p>
+                  </div>
+                </a>
+              </div>
+              <div class="col-4 p-2 py-3">
+                <a class="dropdown-icon-item text-decoration-none" href="javascript:;">
+                  <div class="text-center">
+                    <img src="https://www.harcomia.com/assets/images/brands/dribbble.png" />
+                    <p class="mb-0">Dribbble</p>
+                  </div>
+                </a>
               </div>
             </div>
+            <div class="d-flex grid-row">
+              <div class="col-4 p-2 py-3">
+                <a class="dropdown-icon-item text-decoration-none" href="javascript:;">
+                  <div class="text-center">
+                    <img src="https://www.harcomia.com/assets/images/brands/dropbox.png" />
+                    <p class="mb-0">Dropbox</p>
+                  </div>
+                </a>
+              </div>
+              <div class="col-4 p-2 py-3">
+                <a class="dropdown-icon-item text-decoration-none" href="javascript:;">
+                  <div class="text-center">
+                    <img src="https://www.harcomia.com/assets/images/brands/mail_chimp.png" />
+                    <p class="mb-0">Mail Chimp</p>
+                  </div>
+                </a>
+              </div>
+              <div class="col-4 p-2 py-3">
+                <a class="dropdown-icon-item text-decoration-none" href="javascript:;">
+                  <div class="text-center">
+                    <img src="https://www.harcomia.com/assets/images/brands/slack.png" />
+                    <p class="mb-0">Slack</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+        
+        <li class="nav-item dropdown"> 
+          <a class="nav-link"  data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false"> 
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell icon-lg"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <span class="badge bg-danger rounded-pill">5</span> 
           </a>
-
-          <?php if (user()->role == 'user'): ?>
-          <div class="dropdown-divider"></div>
-          <a href="<?php echo base_url('admin/settings/profile') ?>" class="dropdown-item">
-            <i class="lni lni-user mr-2"></i> <?php echo trans('manage-profile') ?>
-          </a>
-          <?php endif ?>
-
-          <div class="dropdown-divider"></div>
-          <a href="<?php echo base_url('admin/settings/change_password') ?>" class="dropdown-item">
-            <i class="lni lni-lock-alt mr-2"></i> <?php echo trans('change-password') ?>
-          </a>
-
-          <div class="dropdown-divider"></div>
-          <a href="<?php echo base_url('auth/logout') ?>" class="dropdown-item">
-            <i class="lni lni-exit mr-2"></i> <?php echo trans('logout') ?>
-          </a>
-        </div>
+          <div class="dropdown-menu dropdown-menu-right notifications">
+            <div class="d-flex justify-content-between p-2 px-4">
+              <h6> Notifications </h6>
+              <small><u>Unread(3)</u></small>
+            </div>
+            <div class="notify-contents">
+              <div class="d-flex p-2 px-3">
+                <img src="https://www.harcomia.com/assets/images/users/avatar-3.jpg" class="rounded-circle mr-1" loading="lazy" width="32" height="32"/>
+                <div class="ml-3">
+                  <h6 class="mb-1">James Lemire</h6>
+                  <p class="mb-1">It will seem like simplified English.</p>
+                  <span><i class="far fa-clock"></i> 1 hours ago</span>
+                </div>
+              </div>
+              <div class="d-flex p-2 px-3">
+                <img src="https://www.harcomia.com/assets/images/users/avatar-3.jpg" class="rounded-circle mr-1" loading="lazy" width="32" height="32"/>
+                <div class="ml-3">
+                  <h6 class="mb-1">James Lemire</h6>
+                  <p class="mb-1">It will seem like simplified English.</p>
+                  <span><i class="far fa-clock"></i> 1 hours ago</span>
+                </div>
+              </div>
+              <div class="d-flex p-2 px-3">
+                <img src="https://www.harcomia.com/assets/images/users/avatar-3.jpg" class="rounded-circle mr-1" loading="lazy" width="32" height="32"/>
+                <div class="ml-3">
+                  <h6 class="mb-1">James Lemire</h6>
+                  <p class="mb-1">It will seem like simplified English.</p>
+                  <span><i class="far fa-clock"></i> 1 hours ago</span>
+                </div>
+              </div>
+              <div class="d-flex p-2 px-3">
+                <img src="https://www.harcomia.com/assets/images/users/avatar-3.jpg" class="rounded-circle mr-1" loading="lazy" width="32" height="32"/>
+                <div class="ml-3">
+                  <h6 class="mb-1">James Lemire</h6>
+                  <p class="mb-1">It will seem like simplified English.</p>
+                  <span><i class="far fa-clock"></i> 1 hours ago</span>
+                </div>
+              </div>
+            </div>
+            <div class="p-2 px-4 text-center border-top">
+              <a class="text-decoration-none text-center view-more">
+                <i class="fas fa-arrow-alt-circle-right mr-2"></i>
+                <span>View More..</span>
+              </a>
+            </div>
+          </div>
       </li>
-     
-    </ul>
+                    
+      
+        <!-- Messages Dropdown Menu -->
+        <li class="nav-item dropdown pr-4">
+          <a class="nav-link user-log" data-toggle="dropdown" href="#">
+            <img class="rounded-circle mr-2" src="https://www.harcomia.com/dash-v2/assets/images/users/avatar-1.jpg" width="32" height="32" /> 
+            <?php echo ucfirst(user()->name) ?>
+            <i class="right lni lni-chevron-down ml-1"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right mr-4">
+            
+            <?php if (user()->role == 'user'): ?>
+            <a href="<?php echo base_url('admin/settings/profile') ?>" class="dropdown-item px-4">
+              <i class="lni lni-user mr-2"></i> <?php echo trans('manage-profile') ?>
+            </a>
+            <?php endif ?>
+  
+            <a href="<?php echo base_url('admin/settings/change_password') ?>" class="dropdown-item px-4">
+              <i class="lni lni-lock-alt mr-2"></i> <?php echo trans('change-password') ?>
+            </a>
+  
+            <a href="<?php echo base_url('admin/subscription') ?>" class="dropdown-item px-4">
+              <i class="lni lni-coin mr-2"></i> <?php echo trans('subscription') ?>
+            </a>
+  
+            <a href="<?php echo base_url('admin/settings') ?>" class="dropdown-item px-4">
+              <i class="lni lni-cog mr-2"></i> <?php echo trans('settings') ?>
+              <!-- <i class="right lni lni-chevron-down ml-3"></i> -->
+            </a>
+  
+            <a href="<?php echo base_url('admin/coupons/plan') ?>" class="dropdown-item px-4">
+              <i class="lni lni-offer mr-2"></i> <?php echo trans('coupons') ?>
+            </a>
+  
+            <a href="<?php echo base_url('admin/gallery') ?>" class="dropdown-item px-4">
+              <i class="lni lni-image mr-2"></i> <?php echo trans('gallery') ?>
+            </a>
+  
+            <a href="<?php echo base_url('admin/pages') ?>" class="dropdown-item px-4">
+              <i class="lni lni-layout mr-2"></i></i> <?php echo trans('pages') ?>
+            </a>
+  
+            <div class="dropdown-divider"></div>
+            <a href="<?php echo base_url('auth/logout') ?>" class="dropdown-item px-4">
+              <i class="lni lni-exit mr-2"></i> <?php echo trans('logout') ?>
+            </a>
+          </div>
+        </li>
+       
+      </ul>
+    </div>
   </nav>
   <!-- /.navbar -->
 
@@ -152,150 +328,97 @@
       <div class="collapse navbar-collapse" id="topnav_menu_content">
         <ul class="navbar-nav">
           <?php if (is_admin()): ?>
-                  
+            
             <li class="nav-item">
               <a href="<?php echo base_url('admin/dashboard') ?>" class="nav-link <?php if(isset($page_title) && $page_title == "Dashboard"){echo "active";} ?>">
-                <i class="nav-icon lni lni-grid-alt"></i> <p><?php echo trans('dashboard') ?></p>
+                <i class="nav-icon fa fa-home"></i> <span><?php echo trans('dashboard') ?></span>
               </a>
             </li>
             
-            <li class="nav-item has-treeview <?php if(isset($page) && $page == "Settings"){echo "menu-open";} ?>">
-              <a href="#" class="nav-link <?php if(isset($page) && $page == "Settings"){echo "active";} ?>">
-                <i class="nav-icon lni lni-cog"></i>
-                <p>
-                  <?php echo trans('settings') ?>
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="<?php echo base_url('admin/settings') ?>" class="nav-link <?php if(isset($page_title) && $page_title == "System Settings"){echo "active";} ?>">
-                    <i class="lni lni-layout nav-icon"></i>
-                    <p><?php echo trans('website-settings') ?></p>
-                  </a>
-                </li>
-
-                <li class="nav-item <?= $uval; ?>">
-                  <a href="<?php echo base_url('admin/payment/settings') ?>" class="nav-link <?php if(isset($page_title) && $page_title == "Payment Settings"){echo "active";} ?>">
-                    <i class="lni lni-coin nav-icon"></i>
-                    <p><?php echo trans('payment-settings') ?></p>
-                  </a>
-                </li>
-
-                <li class="nav-item">
-                  <a href="<?php echo base_url('admin/settings/license') ?>" class="nav-link <?php if(isset($page_title) && $page_title == "License"){echo "active";} ?>">
-                    <i class="lni lni-key nav-icon rt-90"></i>
-                    <p><?php echo trans('license') ?></p>
-                  </a>
-                </li>
-
-                <li class="nav-item">
-                  <a href="<?php echo base_url('admin/settings/change_password') ?>" class="nav-link <?php if(isset($page_title) && $page_title == "Change Password"){echo "active";} ?>">
-                    <i class="lni lni-lock-alt nav-icon"></i>
-                    <p><?php echo trans('change-password') ?></p>
-                  </a>
-                </li>
-
-              </ul>
-            </li>
-
             <li class="nav-item has-treeview <?php if(isset($page) && $page == "Payouts"){echo "menu-open";} ?> <?= $uval; ?>">
               <a href="#" class="nav-link <?php if(isset($page) && $page == "Payouts"){echo "active";} ?>">
                 <i class="nav-icon fas fa-credit-card"></i>
-                <p>
+                <span>
                   <?php echo trans('payouts') ?>
                   <i class="right lni lni-chevron-left"></i>
-                </p>
+                </span>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a class="nav-link <?php if(isset($page_title) && $page_title == "Add Payout"){echo "active";} ?>" href="<?php echo base_url('admin/payouts/add') ?>"><i class="far fa-plus-circle nav-icon"></i> <p><?php echo trans('add-payout') ?></p></a>
+                  <a class="nav-link <?php if(isset($page_title) && $page_title == "Add Payout"){echo "active";} ?>" href="<?php echo base_url('admin/payouts/add') ?>"><i class="far fa-plus-circle nav-icon"></i> <span><?php echo trans('add-payout') ?></span></a>
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link <?php if(isset($page_title) && $page_title == "Payout Settings"){echo "active";} ?>" href="<?php echo base_url('admin/payouts/settings') ?>"><i class="lni lni-coin nav-icon"></i> <p><?php echo trans('payout-settings') ?></p></a>
+                  <a class="nav-link <?php if(isset($page_title) && $page_title == "Payout Settings"){echo "active";} ?>" href="<?php echo base_url('admin/payouts/settings') ?>"><i class="lni lni-coin nav-icon"></i> <span><?php echo trans('payout-settings') ?></span></a>
                 </li>
                 
                 <li class="nav-item">
-                  <a class="nav-link <?php if(isset($page_title) && $page_title == "Payout Requests"){echo "active";} ?>" href="<?php echo base_url('admin/payouts/requests') ?>"><i class="fas fa-file-invoice-dollar nav-icon"></i> <p><?php echo trans('payout-requests') ?></p></a>
+                  <a class="nav-link <?php if(isset($page_title) && $page_title == "Payout Requests"){echo "active";} ?>" href="<?php echo base_url('admin/payouts/requests') ?>"><i class="fas fa-file-invoice-dollar nav-icon"></i> <span><?php echo trans('payout-requests') ?></span></a>
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link <?php if(isset($page_title) && $page_title == "Payout Completed"){echo "active";} ?>" href="<?php echo base_url('admin/payouts/completed') ?>"><i class="far fa-check-circle nav-icon"></i> <p><?php echo trans('completed') ?></p></a>
+                  <a class="nav-link <?php if(isset($page_title) && $page_title == "Payout Completed"){echo "active";} ?>" href="<?php echo base_url('admin/payouts/completed') ?>"><i class="far fa-check-circle nav-icon"></i> <span><?php echo trans('completed') ?></span></a>
                 </li>
               </ul>
             </li>
 
             <li class="nav-item">
               <a class="nav-link <?php if(isset($page_title) && $page_title == "Language"){echo "active";} ?>" href="<?php echo base_url('admin/language') ?>">
-                <i class="nav-icon fas fa-globe"></i> <p><?php echo trans('language') ?></p>
+                <i class="nav-icon fas fa-globe"></i> <span><?php echo trans('language') ?></span>
               </a>
             </li>
 
             <li class="nav-item">
               <a class="nav-link <?php if(isset($page_title) && $page_title == "Package"){echo "active";} ?>" href="<?php echo base_url('admin/package') ?>">
-                <i class="nav-icon lni lni-layers"></i> <p><?php echo trans('plans') ?></p>
-              </a>
-            </li>
-
-            <li class="nav-item d-hides">
-              <a class="nav-link <?php if(isset($page_title) && $page_title == "Coupons"){echo "active";} ?>" href="<?php echo base_url('admin/coupons/plan') ?>">
-              <i class="nav-icon lni lni-offer"></i> <p><?php echo trans('coupons') ?></p>
+                <i class="nav-icon lni lni-layers"></i> <span><?php echo trans('plans') ?></span>
               </a>
             </li>
 
             <li class="nav-item">
               <a class="nav-link <?php if(isset($page_title) && $page_title == "Category"){echo "active";} ?>" href="<?php echo base_url('admin/category') ?>">
-                <i class="nav-icon lni lni-folder"></i> <p><?php echo trans('categories') ?></p>
+                <i class="nav-icon lni lni-folder"></i> <span><?php echo trans('categories') ?></span>
               </a>
             </li>
 
             <li class="nav-item">
               <a class="nav-link <?php if(isset($page_title) && $page_title == "Blogs"){echo "active";} ?>" href="<?php echo base_url('admin/blog') ?>">
-                <i class="nav-icon lni lni-image"></i> <p><?php echo trans('blogs') ?></p>
+                <i class="nav-icon lni lni-image"></i> <span><?php echo trans('blogs') ?></span>
               </a>
             </li>
 
             <li class="nav-item">
               <a class="nav-link <?php if(isset($page_title) && $page_title == "Users"){echo "active";} ?>" href="<?php echo base_url('admin/users') ?>">
-                <i class="nav-icon lni lni-users"></i> <p><?php echo trans('users') ?></p>
+                <i class="nav-icon lni lni-users"></i> <span><?php echo trans('users') ?></span>
               </a>
             </li>
 
             <li class="nav-item">
               <a class="nav-link <?php if(isset($page_title) && $page_title == "Testimonials"){echo "active";} ?>" href="<?php echo base_url('admin/testimonial') ?>">
-                <i class="nav-icon far fa-comment-dots"></i> <p><?php echo trans('testimonials') ?> </p> 
+                <i class="nav-icon far fa-comment-dots"></i> <span><?php echo trans('testimonials') ?> </span> 
               </a>
             </li>
 
             <li class="nav-item">
               <a class="nav-link <?php if(isset($page_title) && $page_title == "Features"){echo "active";} ?>" href="<?php echo base_url('admin/site_features') ?>">
-                <i class="nav-icon lni lni-star"></i> <p><?php echo trans('features') ?></p>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link <?php if(isset($page_title) && $page_title == "Pages"){echo "active";} ?>" href="<?php echo base_url('admin/pages') ?>">
-                <i class="nav-icon lni lni-layout"></i> <p><?php echo trans('pages') ?></p>
+                <i class="nav-icon lni lni-star"></i> <span><?php echo trans('features') ?></span>
               </a>
             </li>
 
             <li class="nav-item">
               <a class="nav-link <?php if(isset($page_title) && $page_title == "Faqs"){echo "active";} ?>" href="<?php echo base_url('admin/faq') ?>">
-                <i class="nav-icon lni lni-question-circle"></i> <p><?php echo trans('faqs') ?></p>
+                <i class="nav-icon lni lni-question-circle"></i> <span><?php echo trans('faqs') ?></span>
               </a>
             </li>
 
             <li class="nav-item">
               <a class="nav-link <?php if(isset($page_title) && $page_title == "Contact"){echo "active";} ?>" href="<?php echo base_url('admin/contact') ?>">
-                <i class="nav-icon lni lni-popup"></i> <p><?php echo trans('contacts') ?></p>
+                <i class="nav-icon lni lni-popup"></i> <span><?php echo trans('contacts') ?></span>
               </a>
             </li>
 
             <li class="nav-item">
               <a class="nav-link <?php if(isset($page_title) && $page_title == "App Info"){echo "active";} ?>" href="<?php echo base_url('admin/dashboard/app_info') ?>">
-                <i class="nav-icon far fa-question-circle"></i> <p><?php echo trans('info') ?></p>
+                <i class="nav-icon far fa-question-circle"></i> <span><?php echo trans('info') ?></span>
               </a>
             </li>
 
@@ -305,7 +428,7 @@
 
             <li class="nav-item">
               <a href="<?php echo base_url('admin/dashboard/user') ?>" class="nav-link <?php if(isset($page_title) && $page_title == "User Dashboard"){echo "active";} ?>">
-                <i class="nav-icon lni lni-grid-alt"></i> <span><?php echo trans('dashboard') ?></span>
+                <i class="nav-icon fa fa-home"></i> <span><?php echo trans('dashboard') ?></span>
               </a>
             </li>
 

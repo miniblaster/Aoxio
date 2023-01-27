@@ -25,7 +25,7 @@
   <?php echo $this->session->unset_userdata('msg'); $this->session->unset_userdata('error'); ?>
 
   <!-- Main Footer -->
-  <footer class="main-footer">
+  <footer class="main-footer container">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">
       <?php echo trans('version') ?> <?php echo html_escape(settings()->version) ?>

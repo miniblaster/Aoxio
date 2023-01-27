@@ -45,7 +45,8 @@
 
 html {
   font-family: sans-serif;
-  line-height: 1.15;
+  /* line-height: 1.15; */
+  /* font-size: 90% !important; */
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -57,13 +58,159 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 body {
   margin: 0;
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 1.5;
   color: #212529;
   text-align: left;
   background-color: #ffffff;
 }
+
+
+/* Custom CSS */
+
+.countries span {
+  font-size: 13px;
+  color: grey;
+}
+
+.countries span:hover {
+  color: var(--primary);
+}
+
+.countries div:hover {
+  background-color: rgba(0, 0, 0, .05);
+  transition: all .3s;
+}
+
+#topnav_menu_content a.nav-link {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+}
+
+#topnav_menu_content a.nav-link i {
+  margin-right: 7px;
+}
+
+#topnav_menu_content a.nav-link:hover, #topnav_menu_content a.nav-link.active {
+  color: var(--primary);
+  transition: all .5s;
+}
+
+.grid-row {
+  width: 300px;
+}
+
+.grid-row img {
+  width: 24px;
+  height: 24px;
+  margin: 10px;
+}
+
+.grid-row p {
+  font-size: 13px;
+  color: grey;
+}
+
+.grid-row>div:hover {
+  background-color: rgba(0, 0, 0, .05);
+  color: var(--primary);
+  transition: all .3s;
+}
+
+.user-log {
+  font-size: 13px !important;
+}
+
+.user-log i {
+  font-size: 8px; 
+  font-weight: bold;
+}
+
+.notifications .view-more {
+	cursor: pointer;
+	color: #007bff !important;
+}
+
+@media (min-width: 992px) {
+	.notifications {
+		width: 320px;
+	}
+}
+
+.notify-contents {
+	height: 200px; 
+	overflow: auto;
+  font-size: 85% !important;
+  color: grey;
+	transition: .5s all;
+}
+
+.notify-contents h6 {
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.notify-contents>div:hover {
+	cursor: pointer;
+	background-color: rgba(0, 0, 0, .05);
+	transition: .5s all;
+}
+
+@media (min-width: 992px) {
+	.nav-item .badge {
+		position: absolute;
+		top: 0px;
+		right: 5px;
+		padding: 2px 5px;
+	}
+}
+
+@media (max-width: 992px) {
+	.nav-item .badge {
+		position: absolute;
+		top: 0px;
+		left: 30px;
+		padding: 2px 5px;
+	}
+}
+
+.dropdown .dropdown-menu {
+	animation-name: opacityIn;
+	animation-duration: 0.3s;
+}
+
+@keyframes opacityIn {
+	from {
+		opacity: .3;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+/* width */
+::-webkit-scrollbar {
+	width: 5px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 5px white; 
+	border-radius: 5px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: lightgrey; 
+	border-radius: 5px;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: grey; 
+}
+
+/* End Custom CSS */
+
 
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important;
@@ -3251,7 +3398,7 @@ input[type="button"].btn-block {
     display: none;
     float: left;
     min-width: 10rem;
-    padding: 0.8rem 0;
+    padding: 0.1rem 0;
     margin: 0.125rem 0 0;
     font-size: 15px;
     color: #212529;
@@ -13461,7 +13608,7 @@ body.text-sm .control-sidebar {
 
 .dropdown-menu-lg {
   max-width: 300px;
-  min-width: 280px;
+  font-size: 13px;
   padding: 0;
 }
 
@@ -32134,15 +32281,14 @@ label {
 }
 
 a.nav-link.user-log:hover {
-    background: #f1f1f1;
-    border: 1px solid #eee;
+    color: #aaa !important;
     border-radius: 20px;
 }
 a.nav-link.user-log {
     font-size: 15px;
-    border: 1px solid #eee;
-    color: #666 !important;
+    color: white !important;
     border-radius: 20px;
+    transition: all .5s;
 }
 
 #userIncomeChart{
