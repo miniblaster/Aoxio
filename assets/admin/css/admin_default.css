@@ -69,6 +69,10 @@ body {
 
 /* Custom CSS */
 
+.main-header.bg-dark {
+  background-color: #061422 !important;
+}
+
 .countries span {
   font-size: 13px;
   color: grey;
@@ -98,8 +102,10 @@ body {
   transition: all .5s;
 }
 
-.grid-row {
-  width: 300px;
+@media (min-width: 992px) {
+	.grid-row {
+		width: 300px;
+	}
 }
 
 .grid-row img {
@@ -171,7 +177,7 @@ body {
 	.nav-item .badge {
 		position: absolute;
 		top: 0px;
-		left: 30px;
+		left: 15px;
 		padding: 2px 5px;
 	}
 }
@@ -211,6 +217,72 @@ body {
 
 /* End Custom CSS */
 
+
+/* Dark Mode */
+
+body.c_darkmode .content-wrapper {
+  background-color: #111 !important;
+}
+
+body.c_darkmode .card-body, 
+body.c_darkmode .info-box, 
+body.c_darkmode .dropdown-menu, 
+body.c_darkmode .note-editable, 
+body.c_darkmode .nice-select,
+body.c_darkmode input:not(.select2-search__field), 
+body.c_darkmode select, 
+body.c_darkmode textarea,
+body.c_darkmode ul.list  {
+  background-color: #131416 !important;
+  border: 2px #2f343c solid;
+  color: lightgrey;
+}
+
+body.c_darkmode .note-editable {
+  color: white !important;
+}
+
+body.c_darkmode .select2-selection {
+  background-color: #131416 !important;
+  color: white !important;
+}
+
+body.c_darkmode .note-btn,
+body.c_darkmode ul.list li:hover,
+body.c_darkmode ul.list li.selected.focus {
+  background-color: black !important;
+  color: lightgrey;
+}
+
+body.c_darkmode .note-btn:hover {
+  background-color: #2f343c !important;
+}
+
+body.c_darkmode .topnav-menu {
+  background-color: #111111 !important;
+}
+
+body.c_darkmode .main-footer {
+  background-color: #131416 !important;
+}
+
+
+body.c_darkmode .dropdown-item {
+  color: lightgrey !important;
+}
+
+body.c_darkmode .dropdown-item:hover {
+  background-color: black !important;
+}
+
+body.c_darkmode .grid-row>div:hover,
+body.c_darkmode .countries>div:hover,
+body.c_darkmode .notify-contents>div:hover {
+  background-color: black !important;
+} 
+
+
+/* End Dark Mode */
 
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important;

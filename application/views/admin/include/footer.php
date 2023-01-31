@@ -25,13 +25,15 @@
   <?php echo $this->session->unset_userdata('msg'); $this->session->unset_userdata('error'); ?>
 
   <!-- Main Footer -->
-  <footer class="main-footer container">
+  <footer class="main-footer border-0">
     <!-- To the right -->
-    <div class="float-right d-none d-sm-inline">
-      <?php echo trans('version') ?> <?php echo html_escape(settings()->version) ?>
+    <div class="container">
+      <div class="float-right d-none d-sm-inline">
+        <?php echo trans('version') ?> <?php echo html_escape(settings()->version) ?>
+      </div>
+      <!-- Default to the left -->
+      <strong><?php echo trans('copyright') ?> &copy; <?php echo date('Y') ?>  <?php echo trans('all-rights-reserved') ?>.
     </div>
-    <!-- Default to the left -->
-    <strong><?php echo trans('copyright') ?> &copy; <?php echo date('Y') ?>  <?php echo trans('all-rights-reserved') ?>.
   </footer>
 </div>
 <!-- ./wrapper -->

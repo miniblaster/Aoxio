@@ -26,14 +26,14 @@
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/line-icons/lineicons.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/css/admin_default.css?var=<?= settings()->version ?>&time=<?=time();?>">
   <!-- Google Font: DM Sans -->
   <link href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,400i,700&amp;display=swap" rel="stylesheet">
   <!-- iCheck for checkboxes and radio inputs -->
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- sweet alert -->
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/css/sweet-alert.css">
+  <!-- Light/Dark Mode Bootstrap -->
+  <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/css/bootstrap-dark.min.css" id="css_theme_style" >
   <!-- tags inputs -->
   <link href="<?php echo base_url() ?>assets/admin/css/bootstrap-tagsinput.css" rel="stylesheet" />
   <!-- Select2 -->
@@ -51,6 +51,8 @@
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/plugins/summernote/summernote-bs4.min.css">
   <!-- Bootstrap Color Picker -->
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/css/bootstrap-colorpicker.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/css/admin_default.css?var=<?= settings()->version ?>&time=<?=time();?>">
 
   <?php if (isset($page_title) && $page_title == 'Holidays'): ?>
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/css/holiday.css">
@@ -77,12 +79,12 @@
  
   </head>
 
-  <body class="hold-transition sidebar-mini" data-theme-style="dark">
+  <body class="hold-transition sidebar-mini" data-theme-style="light">
   
   <div class="wrapper <?php if(settings()->site_info == 3){echo "d-none";} ?>">
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-dark bg-dark">
+  <nav class="main-header navbar navbar-expand-lg navbar-dark bg-dark border-0">
     <div class="container">
        
       <a target="_blank" href="<?php echo base_url() ?>" class="brand-link">
@@ -105,219 +107,225 @@
         <?php endif; ?>
       </ul>
 
-      
-      <!-- Right navbar links -->
-      <ul class="rtlnav navbar-nav collapse navbar-collapse justify-content-end <?php if(text_dir() == 'ltr'){echo "ml-auto";} ?>" id="main_navbar">
+      <button class="btn navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#main_navbar"aria-expanded="false" aria-label="">
+          <i class="fa fa-fw fa-bars"></i>
+      </button>
 
-        <li class="nav-item dropdown"> 
-          <a class="nav-link"  data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false"> 
-            <img id="header-lang-img" src="https://www.harcomia.com/dash-v2/assets/images/flags/us.jpg" alt="Header Language" height="16"> 
-          </a>
-          <div class="dropdown-menu dropdown-menu-right countries">
-            <div class="p-1 px-4">
-              <a class="dropdown-icon-item text-decoration-none" href="javascript:;">
-                <img src="https://www.harcomia.com/dash-v2/assets/images/flags/us.jpg" alt="user-image" class="me-1" height="12">
-                <span class="align-middle ml-2">English</span>
-              </a>
-            </div>
-            <div class="p-1 px-4">
-              <a class="dropdown-icon-item text-decoration-none" href="javascript:;">
-                <img src="https://www.harcomia.com/dash-v2/assets/images/flags/spain.jpg" alt="user-image" class="me-1" height="12">
-                <span class="align-middle ml-2">Spanish</span>
-              </a>
-            </div>
-            <div class="p-1 px-4">
-              <a class="dropdown-icon-item text-decoration-none" href="javascript:;">
-                <img src="https://www.harcomia.com/dash-v2/assets/images/flags/germany.jpg" alt="user-image" class="me-1" height="12">
-                <span class="align-middle ml-2">Germany</span>
-              </a>
-            </div>
-            <div class="p-1 px-4">
-              <a class="dropdown-icon-item text-decoration-none" href="javascript:;">
-                <img src="https://www.harcomia.com/dash-v2/assets/images/flags/italy.jpg" alt="user-image" class="me-1" height="12">
-                <span class="align-middle ml-2">Italian</span>
-              </a>
-            </div>
-            <div class="p-1 px-4">
-              <a class="dropdown-icon-item text-decoration-none" href="javascript:;">
-                <img src="https://www.harcomia.com/dash-v2/assets/images/flags/russia.jpg" alt="user-image" class="me-1" height="12">
-                <span class="align-middle ml-2">Russian</span>
-              </a>
-            </div>
-          </div>
-        </li>
+      <div class="collapse navbar-collapse" id="main_navbar">
+        <!-- Right navbar links -->
+        <ul class="rtlnav navbar-nav justify-content-end <?php if(text_dir() == 'ltr'){echo "ml-auto";} ?>" id="">
 
-        <li class="nav-item dropdown"> 
-          <a class="nav-link" href="javascript:;"> 
-            <button type="button" id="switch_theme_style" class="btn btn-link text-decoration-none p-0" data-toggle="tooltip">
-              <span style="color: white" data-theme-style="light" class=""><i class="far fa-fw fa-lg fa-moon mr-1"></i> </span>
-              <span style="color: white" data-theme-style="dark" class="d-none"><i class="far fa-fw fa-lg fa-sun mr-1"></i> </span>
-            </button>
-          </a>
+          <li class="nav-item dropdown"> 
+            <a class="nav-link"  data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false"> 
+              <img id="header-lang-img" src="<?= base_url() . 'assets/images/countries/us.svg' ?>" alt="Header Language" height="16"> 
+            </a>
+            <div class="dropdown-menu dropdown-menu-right countries">
+              <div class="p-1 px-4">
+                <a class="dropdown-icon-item text-decoration-none" href="javascript:;">
+                  <img src="<?= base_url() . 'assets/images/countries/us.svg' ?>" alt="user-image" class="me-1" height="12">
+                  <span class="align-middle ml-2">English</span>
+                </a>
+              </div>
+              <div class="p-1 px-4">
+                <a class="dropdown-icon-item text-decoration-none" href="javascript:;">
+                  <img src="<?= base_url() . 'assets/images/countries/es.svg' ?>" alt="user-image" class="me-1" height="12">
+                  <span class="align-middle ml-2">Spanish</span>
+                </a>
+              </div>
+              <div class="p-1 px-4">
+                <a class="dropdown-icon-item text-decoration-none" href="javascript:;">
+                  <img src="<?= base_url() . 'assets/images/countries/de.svg' ?>" alt="user-image" class="me-1" height="12">
+                  <span class="align-middle ml-2">Germany</span>
+                </a>
+              </div>
+              <div class="p-1 px-4">
+                <a class="dropdown-icon-item text-decoration-none" href="javascript:;">
+                  <img src="<?= base_url() . 'assets/images/countries/it.svg' ?>" alt="user-image" class="me-1" height="12">
+                  <span class="align-middle ml-2">Italian</span>
+                </a>
+              </div>
+              <div class="p-1 px-4">
+                <a class="dropdown-icon-item text-decoration-none" href="javascript:;">
+                  <img src="<?= base_url() . 'assets/images/countries/ru.svg' ?>" alt="user-image" class="me-1" height="12">
+                  <span class="align-middle ml-2">Russian</span>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown"> 
+            <a class="nav-link" href="javascript:;"> 
+              <button type="button" id="switch_theme_style" class="btn btn-link text-decoration-none p-0" data-toggle="tooltip">
+                <span style="color: white" data-theme-style="light" class=""><i class="far fa-fw fa-lg fa-moon mr-1"></i> </span>
+                <span style="color: white" data-theme-style="dark" class="d-none"><i class="far fa-fw fa-lg fa-sun mr-1"></i> </span>
+              </button>
+            </a>
+            <?php //include_once(base_url() . "application/views/theme_style_js.php") ?>
+    
+          </li>
+          
+          <li class="nav-item dropdown"> 
+            <a class="nav-link" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false"> 
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid icon-lg"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> 
+            </a>
+            <div class="dropdown-menu dropdown-menu-right p-3">
+              <div class="d-flex grid-row">
+                <div class="col-4 p-2 py-3">
+                  <a class="dropdown-icon-item text-decoration-none" href="javascript:;">
+                    <div class="text-center">
+                      <img src="https://www.harcomia.com/assets/images/brands/github.png" />
+                      <p class="mb-0">GitHub</p>
+                    </div>
+                  </a>
+                </div>
+                <div class="col-4 p-2 py-3">
+                  <a class="dropdown-icon-item text-decoration-none" href="javascript:;">
+                    <div class="text-center">
+                      <img src="https://www.harcomia.com/assets/images/brands/bitbucket.png" />
+                      <p class="mb-0">Bitbucket</p>
+                    </div>
+                  </a>
+                </div>
+                <div class="col-4 p-2 py-3">
+                  <a class="dropdown-icon-item text-decoration-none" href="javascript:;">
+                    <div class="text-center">
+                      <img src="https://www.harcomia.com/assets/images/brands/dribbble.png" />
+                      <p class="mb-0">Dribbble</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="d-flex grid-row">
+                <div class="col-4 p-2 py-3">
+                  <a class="dropdown-icon-item text-decoration-none" href="javascript:;">
+                    <div class="text-center">
+                      <img src="https://www.harcomia.com/assets/images/brands/dropbox.png" />
+                      <p class="mb-0">Dropbox</p>
+                    </div>
+                  </a>
+                </div>
+                <div class="col-4 p-2 py-3">
+                  <a class="dropdown-icon-item text-decoration-none" href="javascript:;">
+                    <div class="text-center">
+                      <img src="https://www.harcomia.com/assets/images/brands/mail_chimp.png" />
+                      <p class="mb-0">Mail Chimp</p>
+                    </div>
+                  </a>
+                </div>
+                <div class="col-4 p-2 py-3">
+                  <a class="dropdown-icon-item text-decoration-none" href="javascript:;">
+                    <div class="text-center">
+                      <img src="https://www.harcomia.com/assets/images/brands/slack.png" />
+                      <p class="mb-0">Slack</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+          
+          <li class="nav-item dropdown"> 
+            <a class="nav-link"  data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false"> 
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell icon-lg"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+              <span class="badge bg-danger rounded-pill">5</span> 
+            </a>
+            <div class="dropdown-menu dropdown-menu-right notifications">
+              <div class="d-flex justify-content-between p-2 px-4">
+                <h6> Notifications </h6>
+                <small><u>Unread(3)</u></small>
+              </div>
+              <div class="notify-contents">
+                <div class="d-flex p-2 px-3">
+                  <img src="https://www.harcomia.com/assets/images/users/avatar-3.jpg" class="rounded-circle mr-1" loading="lazy" width="32" height="32"/>
+                  <div class="ml-3">
+                    <h6 class="mb-1">James Lemire</h6>
+                    <p class="mb-1">It will seem like simplified English.</p>
+                    <span><i class="far fa-clock"></i> 1 hours ago</span>
+                  </div>
+                </div>
+                <div class="d-flex p-2 px-3">
+                  <img src="https://www.harcomia.com/assets/images/users/avatar-3.jpg" class="rounded-circle mr-1" loading="lazy" width="32" height="32"/>
+                  <div class="ml-3">
+                    <h6 class="mb-1">James Lemire</h6>
+                    <p class="mb-1">It will seem like simplified English.</p>
+                    <span><i class="far fa-clock"></i> 1 hours ago</span>
+                  </div>
+                </div>
+                <div class="d-flex p-2 px-3">
+                  <img src="https://www.harcomia.com/assets/images/users/avatar-3.jpg" class="rounded-circle mr-1" loading="lazy" width="32" height="32"/>
+                  <div class="ml-3">
+                    <h6 class="mb-1">James Lemire</h6>
+                    <p class="mb-1">It will seem like simplified English.</p>
+                    <span><i class="far fa-clock"></i> 1 hours ago</span>
+                  </div>
+                </div>
+                <div class="d-flex p-2 px-3">
+                  <img src="https://www.harcomia.com/assets/images/users/avatar-3.jpg" class="rounded-circle mr-1" loading="lazy" width="32" height="32"/>
+                  <div class="ml-3">
+                    <h6 class="mb-1">James Lemire</h6>
+                    <p class="mb-1">It will seem like simplified English.</p>
+                    <span><i class="far fa-clock"></i> 1 hours ago</span>
+                  </div>
+                </div>
+              </div>
+              <div class="p-2 px-4 text-center border-top">
+                <a class="text-decoration-none text-center view-more">
+                  <i class="fas fa-arrow-alt-circle-right mr-2"></i>
+                  <span>View More..</span>
+                </a>
+              </div>
+            </div>
         </li>
+                      
         
-        <li class="nav-item dropdown"> 
-          <a class="nav-link" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false"> 
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid icon-lg"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg> 
-          </a>
-          <div class="dropdown-menu dropdown-menu-right p-3">
-            <div class="d-flex grid-row">
-              <div class="col-4 p-2 py-3">
-                <a class="dropdown-icon-item text-decoration-none" href="javascript:;">
-                  <div class="text-center">
-                    <img src="https://www.harcomia.com/assets/images/brands/github.png" />
-                    <p class="mb-0">GitHub</p>
-                  </div>
-                </a>
-              </div>
-              <div class="col-4 p-2 py-3">
-                <a class="dropdown-icon-item text-decoration-none" href="javascript:;">
-                  <div class="text-center">
-                    <img src="https://www.harcomia.com/assets/images/brands/bitbucket.png" />
-                    <p class="mb-0">Bitbucket</p>
-                  </div>
-                </a>
-              </div>
-              <div class="col-4 p-2 py-3">
-                <a class="dropdown-icon-item text-decoration-none" href="javascript:;">
-                  <div class="text-center">
-                    <img src="https://www.harcomia.com/assets/images/brands/dribbble.png" />
-                    <p class="mb-0">Dribbble</p>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <div class="d-flex grid-row">
-              <div class="col-4 p-2 py-3">
-                <a class="dropdown-icon-item text-decoration-none" href="javascript:;">
-                  <div class="text-center">
-                    <img src="https://www.harcomia.com/assets/images/brands/dropbox.png" />
-                    <p class="mb-0">Dropbox</p>
-                  </div>
-                </a>
-              </div>
-              <div class="col-4 p-2 py-3">
-                <a class="dropdown-icon-item text-decoration-none" href="javascript:;">
-                  <div class="text-center">
-                    <img src="https://www.harcomia.com/assets/images/brands/mail_chimp.png" />
-                    <p class="mb-0">Mail Chimp</p>
-                  </div>
-                </a>
-              </div>
-              <div class="col-4 p-2 py-3">
-                <a class="dropdown-icon-item text-decoration-none" href="javascript:;">
-                  <div class="text-center">
-                    <img src="https://www.harcomia.com/assets/images/brands/slack.png" />
-                    <p class="mb-0">Slack</p>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </li>
-        
-        <li class="nav-item dropdown"> 
-          <a class="nav-link"  data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false"> 
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell icon-lg"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
-            <span class="badge bg-danger rounded-pill">5</span> 
-          </a>
-          <div class="dropdown-menu dropdown-menu-right notifications">
-            <div class="d-flex justify-content-between p-2 px-4">
-              <h6> Notifications </h6>
-              <small><u>Unread(3)</u></small>
-            </div>
-            <div class="notify-contents">
-              <div class="d-flex p-2 px-3">
-                <img src="https://www.harcomia.com/assets/images/users/avatar-3.jpg" class="rounded-circle mr-1" loading="lazy" width="32" height="32"/>
-                <div class="ml-3">
-                  <h6 class="mb-1">James Lemire</h6>
-                  <p class="mb-1">It will seem like simplified English.</p>
-                  <span><i class="far fa-clock"></i> 1 hours ago</span>
-                </div>
-              </div>
-              <div class="d-flex p-2 px-3">
-                <img src="https://www.harcomia.com/assets/images/users/avatar-3.jpg" class="rounded-circle mr-1" loading="lazy" width="32" height="32"/>
-                <div class="ml-3">
-                  <h6 class="mb-1">James Lemire</h6>
-                  <p class="mb-1">It will seem like simplified English.</p>
-                  <span><i class="far fa-clock"></i> 1 hours ago</span>
-                </div>
-              </div>
-              <div class="d-flex p-2 px-3">
-                <img src="https://www.harcomia.com/assets/images/users/avatar-3.jpg" class="rounded-circle mr-1" loading="lazy" width="32" height="32"/>
-                <div class="ml-3">
-                  <h6 class="mb-1">James Lemire</h6>
-                  <p class="mb-1">It will seem like simplified English.</p>
-                  <span><i class="far fa-clock"></i> 1 hours ago</span>
-                </div>
-              </div>
-              <div class="d-flex p-2 px-3">
-                <img src="https://www.harcomia.com/assets/images/users/avatar-3.jpg" class="rounded-circle mr-1" loading="lazy" width="32" height="32"/>
-                <div class="ml-3">
-                  <h6 class="mb-1">James Lemire</h6>
-                  <p class="mb-1">It will seem like simplified English.</p>
-                  <span><i class="far fa-clock"></i> 1 hours ago</span>
-                </div>
-              </div>
-            </div>
-            <div class="p-2 px-4 text-center border-top">
-              <a class="text-decoration-none text-center view-more">
-                <i class="fas fa-arrow-alt-circle-right mr-2"></i>
-                <span>View More..</span>
+          <!-- Messages Dropdown Menu -->
+          <li class="nav-item dropdown pr-4">
+            <a class="nav-link user-log" data-toggle="dropdown" href="#">
+              <img class="rounded-circle mr-2" src="https://www.harcomia.com/dash-v2/assets/images/users/avatar-1.jpg" width="32" height="32" /> 
+              <?php echo ucfirst(user()->name) ?>
+              <i class="right lni lni-chevron-down ml-1"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu dropdown-menu-right mr-4">
+              
+              <?php if (user()->role == 'user'): ?>
+              <a href="<?php echo base_url('admin/settings/profile') ?>" class="dropdown-item px-4">
+                <i class="lni lni-user mr-2"></i> <?php echo trans('manage-profile') ?>
+              </a>
+              <?php endif ?>
+    
+              <a href="<?php echo base_url('admin/settings/change_password') ?>" class="dropdown-item px-4">
+                <i class="lni lni-lock-alt mr-2"></i> <?php echo trans('change-password') ?>
+              </a>
+    
+              <a href="<?php echo base_url('admin/subscription') ?>" class="dropdown-item px-4">
+                <i class="lni lni-coin mr-2"></i> <?php echo trans('subscription') ?>
+              </a>
+    
+              <a href="<?php echo base_url('admin/settings') ?>" class="dropdown-item px-4">
+                <i class="lni lni-cog mr-2"></i> <?php echo trans('settings') ?>
+                <!-- <i class="right lni lni-chevron-down ml-3"></i> -->
+              </a>
+    
+              <a href="<?php echo base_url('admin/coupons/plan') ?>" class="dropdown-item px-4">
+                <i class="lni lni-offer mr-2"></i> <?php echo trans('coupons') ?>
+              </a>
+    
+              <a href="<?php echo base_url('admin/gallery') ?>" class="dropdown-item px-4">
+                <i class="lni lni-image mr-2"></i> <?php echo trans('gallery') ?>
+              </a>
+    
+              <a href="<?php echo base_url('admin/pages') ?>" class="dropdown-item px-4">
+                <i class="lni lni-layout mr-2"></i></i> <?php echo trans('pages') ?>
+              </a>
+    
+              <div class="dropdown-divider"></div>
+              <a href="<?php echo base_url('auth/logout') ?>" class="dropdown-item px-4">
+                <i class="lni lni-exit mr-2"></i> <?php echo trans('logout') ?>
               </a>
             </div>
-          </div>
-      </li>
-                    
-      
-        <!-- Messages Dropdown Menu -->
-        <li class="nav-item dropdown pr-4">
-          <a class="nav-link user-log" data-toggle="dropdown" href="#">
-            <img class="rounded-circle mr-2" src="https://www.harcomia.com/dash-v2/assets/images/users/avatar-1.jpg" width="32" height="32" /> 
-            <?php echo ucfirst(user()->name) ?>
-            <i class="right lni lni-chevron-down ml-1"></i>
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right mr-4">
-            
-            <?php if (user()->role == 'user'): ?>
-            <a href="<?php echo base_url('admin/settings/profile') ?>" class="dropdown-item px-4">
-              <i class="lni lni-user mr-2"></i> <?php echo trans('manage-profile') ?>
-            </a>
-            <?php endif ?>
-  
-            <a href="<?php echo base_url('admin/settings/change_password') ?>" class="dropdown-item px-4">
-              <i class="lni lni-lock-alt mr-2"></i> <?php echo trans('change-password') ?>
-            </a>
-  
-            <a href="<?php echo base_url('admin/subscription') ?>" class="dropdown-item px-4">
-              <i class="lni lni-coin mr-2"></i> <?php echo trans('subscription') ?>
-            </a>
-  
-            <a href="<?php echo base_url('admin/settings') ?>" class="dropdown-item px-4">
-              <i class="lni lni-cog mr-2"></i> <?php echo trans('settings') ?>
-              <!-- <i class="right lni lni-chevron-down ml-3"></i> -->
-            </a>
-  
-            <a href="<?php echo base_url('admin/coupons/plan') ?>" class="dropdown-item px-4">
-              <i class="lni lni-offer mr-2"></i> <?php echo trans('coupons') ?>
-            </a>
-  
-            <a href="<?php echo base_url('admin/gallery') ?>" class="dropdown-item px-4">
-              <i class="lni lni-image mr-2"></i> <?php echo trans('gallery') ?>
-            </a>
-  
-            <a href="<?php echo base_url('admin/pages') ?>" class="dropdown-item px-4">
-              <i class="lni lni-layout mr-2"></i></i> <?php echo trans('pages') ?>
-            </a>
-  
-            <div class="dropdown-divider"></div>
-            <a href="<?php echo base_url('auth/logout') ?>" class="dropdown-item px-4">
-              <i class="lni lni-exit mr-2"></i> <?php echo trans('logout') ?>
-            </a>
-          </div>
-        </li>
-       
-      </ul>
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
   <!-- /.navbar -->
@@ -325,6 +333,11 @@
   
   <nav class="navbar navbar-expand-lg navbar-light topnav-menu">
     <div class="container">
+      
+      <button class="btn navbar-toggler d-lg-none m-auto" type="button" data-toggle="collapse" data-target="#topnav_menu_content"aria-expanded="false" aria-label="">
+          <i class="fa fa-fw fa-bars"></i>
+      </button>
+
       <div class="collapse navbar-collapse" id="topnav_menu_content">
         <ul class="navbar-nav">
           <?php if (is_admin()): ?>
@@ -523,5 +536,60 @@
     </div>
   </nav>
       
+         
+  <script>
+
+    window.onload = function() {
+      init();
+    }
+
+    function init() {
+      let css = document.querySelector(`#css_theme_style`);
+      document.querySelector(`body`).setAttribute('data-theme-style', localStorage.theme_style);
+      
+      if (document.querySelector(`body`).getAttribute('data-theme-style') === "light") {
+        document.querySelector(`#switch_theme_style [data-theme-style="dark"]`).classList.add('d-none');
+        document.querySelector(`#switch_theme_style [data-theme-style="light"]`).classList.remove('d-none');
+      } else {
+        document.querySelector(`#switch_theme_style [data-theme-style="light"]`).classList.add('d-none');
+        document.querySelector(`#switch_theme_style [data-theme-style="dark"]`).classList.remove('d-none');
+      }
+
+      document.querySelector(`body`).setAttribute('data-theme-style', localStorage.theme_style);
+
+      switch(localStorage.theme_style) {
+          case 'dark':
+              document.body.classList.add('c_darkmode');
+              document.querySelector('.topnav-menu').classList.add('bg-dark');
+              document.querySelector('.topnav-menu').classList.add('navbar-dark');
+              document.querySelector('.topnav-menu').classList.remove('bg-light');
+              document.querySelector('.topnav-menu').classList.remove('navbar-light');
+              document.querySelector('.main-footer').classList.add('bg-dark');
+              document.querySelector('.main-footer').classList.remove('bg-light');
+              break;
+
+          case 'light':
+              document.body.classList.remove('c_darkmode');
+              document.querySelector('.topnav-menu').classList.remove('bg-dark');
+              document.querySelector('.topnav-menu').classList.remove('navbar-dark');
+              document.querySelector('.topnav-menu').classList.add('bg-light');
+              document.querySelector('.topnav-menu').classList.add('navbar-light');
+              document.querySelector('.main-footer').classList.remove('bg-dark');
+              document.querySelector('.main-footer').classList.add('bg-light');
+              break;
+      }
+    }
+
+    document.querySelector("#switch_theme_style").addEventListener("click", event => {
+      let theme_style = document.querySelector('body[data-theme-style]').getAttribute('data-theme-style');
+      let new_theme_style = theme_style == 'light' ? 'dark' : 'light';
+
+      localStorage.theme_style = new_theme_style;
+
+      init();
+
+      event.preventDefault();
+    })
+    </script>
 
 
